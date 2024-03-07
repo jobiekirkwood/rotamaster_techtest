@@ -1,6 +1,6 @@
 # rotamaster_techtest
 # Part 1 - API
-To run this project download the entire solution and open it in Visual Studio (or similar). The API layer should be the one set to run by default (but ensure it is). Build it and run it and you should be greeted with:
+To run this project download (az a zip and extract it) the entire solution and open it (by double clicking the rotamaster_techtest.sln file) in Visual Studio (or similar). The API layer should be the one set to run by default (but ensure it is). Build it and run it and you should be greeted with:
 ![image](https://github.com/jobiekirkwood/rotamaster_techtest/assets/36970443/4075fd11-3537-47f4-abd8-b945db1d021b)
 four API methods.
 
