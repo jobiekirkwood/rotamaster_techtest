@@ -1,4 +1,5 @@
 ﻿using DataAccess;
+using DataAccess.Models;
 
 namespace Business
 {
@@ -6,9 +7,14 @@ namespace Business
     {
         internal readonly Repository _repository = repository;
 
-        internal int? GetPersonIdByName(string name)
+        internal static int? GetPersonIdByName(string name)
         {
-            return _repository.GetAllPeople().FirstOrDefault(x => x.Name == name).Id;
+            return Repository.GetAllPeople().FirstOrDefault(x => x.Name == name)?.Id;
+        }
+
+        internal static List<People>? GetAllActivePeople()
+        {
+            return Repository.GetAllPeople().Where(x => x.Active).ToList();
         }
     }
 

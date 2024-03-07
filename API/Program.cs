@@ -1,11 +1,14 @@
 
+using Business;
+using DataAccess;
+
 namespace API
 {
     public class Program
     {
         public static void Main(string[] args)
         {
-            var builder = WebApplication.CreateBuilder(args);
+            WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
 
@@ -14,7 +17,12 @@ namespace API
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
-            var app = builder.Build();
+            builder.Services.AddScoped<Repository>();
+            builder.Services.AddScoped<ShiftsService>();
+            builder.Services.AddScoped<PeopleService>();
+
+
+            WebApplication app = builder.Build();
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())

@@ -12,20 +12,29 @@ namespace DataAccess
             if (File.Exists(fileLocation))
             {
                 string json = File.ReadAllText(fileLocation);
-                return JsonConvert.DeserializeObject<List<T>>(json);
+                try
+                {
+                    return JsonConvert.DeserializeObject<List<T>>(json);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message, e.InnerException);
+                    return new List<T>();
+                }
+
             }
 
             return new List<T>();
         }
 
-        private static string GetLocation(string fileName) => Path.Combine(Environment.CurrentDirectory, "Data", fileName);
+        private static string GetLocation(string fileName) => Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data", fileName);
 
-        public List<People> GetAllPeople()
+        public static List<People> GetAllPeople()
         {
             return GetAll<People>("people.json");
         }
 
-        public List<Shifts> GetAllShifts()
+        public static List<Shifts> GetAllShifts()
         {
             return GetAll<Shifts>("shifts.json");
         }
